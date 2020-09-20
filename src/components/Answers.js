@@ -10,14 +10,17 @@ function Answers(props) {
         if (!isAnswered) {
             let elem = e.currentTarget;
             let { correct, increaseScore } = props;
+            // TODO: this is not logical, I don't want to do the minus 1 in the if block
             let answer = Number(elem.dataset.id);
             let updatedClassNames = classNames;
 
-            if (answer === correct) {
-                updatedClassNames[correct] = 'right';
+            if (answer - 1 === correct) {
+                updatedClassNames[answer - 1] = 'right';
+                console.log('increasing score')
                 increaseScore();
             }
             else {
+                console.log('wrong')
                 updatedClassNames[answer - 1] = 'wrong';
                 updatedClassNames[correct] = 'right'
             }

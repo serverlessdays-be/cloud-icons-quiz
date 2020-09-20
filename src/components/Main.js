@@ -68,6 +68,7 @@ class Main extends React.Component {
     }
 
     handleIncreaseScore() {
+        console.log('increasing score')
         this.setState({
             score: this.state.score + 1
         });
