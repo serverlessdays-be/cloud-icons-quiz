@@ -14,7 +14,7 @@ function Answers(props) {
             let updatedClassNames = classNames;
 
             if (answer === correct) {
-                updatedClassNames[answer - 1] = 'right';
+                updatedClassNames[correct] = 'right';
                 increaseScore();
             }
             else {
@@ -28,7 +28,6 @@ function Answers(props) {
     }
 
     useEffect(() => {
-        console.log('calling the useEffect hook')
         setClassNames(['', '', '', ''])
         setIsAnswered(props.isAnswered)
         setAnswers(props.answers)

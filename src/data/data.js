@@ -14,51 +14,51 @@ export default [
     {
         icon: athenaImageFile,
         answers: ['Athena', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
-        correct: 1
+        correct: 0
     },
     {
         icon: dynamodbImageFile,
         answers: ['DynamoDB', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
-        correct: 1
+        correct: 0
     },
     {
         icon: fargateImageFile,
         answers: ['Fargate', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
-        correct: 1
+        correct: 0
     },
     {
         icon: glueImageFile,
         answers: ['Glue', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
-        correct: 1
+        correct: 0
     },
     {
         icon: lambdaImageFile,
         answers: ['Lambda', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
-        correct: 1
+        correct: 0
     },
     {
         icon: rekognitionImageFile,
         answers: ['Rekognition', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
-        correct: 1
+        correct: 0
     },
     {
         icon: s3ImageFile,
         answers: ['S3', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
-        correct: 1
+        correct: 0
     },
     {
         icon: sagemakerImageFile,
         answers: ['Sagemaker', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
-        correct: 1
+        correct: 0
     },
     {
         icon: snsImageFile,
         answers: ['SNS', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
-        correct: 1
+        correct: 0
     },
     {
         icon: sqsImageFile,
         answers: ['SQS', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
-        correct: 1
+        correct: 0
     }
 ]

@@ -76,18 +76,10 @@ class Main extends React.Component {
     render() {
         let { nr, total, question, answers, correct, showButton, questionAnswered, displayPopup, score } = this.state;
 
-        console.log(`${JSON.stringify(data[nr])}`)
-
         return (
             <div className="container">
                 <div className="text-center">
-                    <div class="d-flex justify-content-center">
-                        <img src={`${data[nr - 1].icon}`} />
-                    </div>
-
-
                     <Popup style={{ display: displayPopup }} score={score} total={total} startQuiz={this.handleStartQuiz} />
-
 
                     <div class="d-flex justify-content-center">
                         <div id="question">
@@ -95,14 +87,26 @@ class Main extends React.Component {
                             <p>Can you choose the correct service belonging to this icon !?</p>
                         </div>
                     </div>
+
+
+                    <div class="d-flex justify-content-center">
+                        <img src={`${data[nr - 1].icon}`} className="img-fluid" />
+                    </div>
+
+
+
+                    <div class="d-flex justify-content-center">
+                        <div id="submit" class="d-flex justify-content-center">
+                            {showButton ? <button className="fancy-btn" onClick={this.nextQuestion} >{nr === total ? 'Finish quiz' : 'Next question'}</button> : null}
+                        </div>
+                    </div>
+
                     <div class="d-flex justify-content-center">
                         <Answers answers={answers} correct={correct} showButton={this.handleShowButton} isAnswered={questionAnswered} increaseScore={this.handleIncreaseScore} />
                     </div>
-                    <div id="submit" class="d-flex justify-content-center">
-                        {showButton ? <button className="fancy-btn" onClick={this.nextQuestion} >{nr === total ? 'Finish quiz' : 'Next question'}</button> : null}
-                    </div>
-                    <Footer />
                 </div>
+                <Footer />
+
             </div>
         );
     }
