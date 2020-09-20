@@ -1,9 +1,14 @@
 body {
     background-color: #e4e4e4;
 	font-family: Open Sans;
-    margin-top: 10%;
+    margin-top: 2%;
     margin-bottom: 50px;
 }
+
+img {
+    padding: 1em
+}
+
 
 #question {
     background-color: #0094da;

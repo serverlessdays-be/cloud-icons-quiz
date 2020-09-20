@@ -1,43 +1,64 @@
+import athenaImageFile from './icons/athena.png';
+import dynamodbImageFile from './icons/dynamodb.png';
+import fargateImageFile from './icons/fargate.png';
+import glueImageFile from './icons/glue.png';
+import lambdaImageFile from './icons/lambda.png';
+import pinpointImageFile from './icons/pinpoint.png';
+import rekognitionImageFile from './icons/rekognition.png';
+import s3ImageFile from './icons/s3.png';
+import sagemakerImageFile from './icons/sagemaker.png';
+import snsImageFile from './icons/sns.png';
+import sqsImageFile from './icons/sqs.png';
+
 export default [
     {
-        question: 'What does CSS stand for?',
-        answers: ['Computer Style Sheets', 'Creative Style Sheets', 'Cascading Style Sheets', 'Colorful Style Sheets'],
-        correct: 3
-    },
-
-    {
-        question: 'Where in an HTML document is the correct place to refer to an external style sheet?',
-        answers: ['In the <head> section', 'In the <body> section', 'At the end of the document', 'You can\'t refer to an external style sheet'],
+        icon: athenaImageFile,
+        answers: ['Athena', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
         correct: 1
-    },    
+    },
     {
-        question: 'Which HTML tag is used to define an internal style sheet?',
-        answers: ['<style>', '<script>', '<headStyle>', '<css>'],
+        icon: dynamodbImageFile,
+        answers: ['DynamoDB', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
         correct: 1
-    },    
-    {
-        question: 'Which HTML attribute is used to define inline styles?',
-        answers: ['class', 'style', 'font', 'styles'],
-        correct: 2
     },
     {
-        question: 'Which is the correct CSS syntax?',
-        answers: ['{body:color=black;}', '{body;color:black;}', 'body:color=black;', 'body {color: black;}'],
-        correct: 4
+        icon: fargateImageFile,
+        answers: ['Fargate', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
+        correct: 1
     },
     {
-        question: 'How do you insert a comment in a CSS file?',
-        answers: ['\' this is a comment', '/* this is a comment */', '// this is a comment', '// this is a comment //'],
-        correct: 2
+        icon: glueImageFile,
+        answers: ['Glue', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
+        correct: 1
     },
     {
-        question: 'Which property is used to change the background color?',
-        answers: ['color', 'bgcolor', 'background-color', 'bgColor'],
-        correct: 3
+        icon: lambdaImageFile,
+        answers: ['Lambda', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
+        correct: 1
     },
     {
-        question: 'How do you add a background color for all <h1> elements?',
-        answers: ['all.h1 {background-color:#FFFFFF;}', 'h1.setAll {background-color:#FFFFFF;}', 'h1.all {background-color:#FFFFFF;}', 'h1 {background-color:#FFFFFF;}'],
-        correct: 4
+        icon: rekognitionImageFile,
+        answers: ['Rekognition', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
+        correct: 1
+    },
+    {
+        icon: s3ImageFile,
+        answers: ['S3', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
+        correct: 1
+    },
+    {
+        icon: sagemakerImageFile,
+        answers: ['Sagemaker', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
+        correct: 1
+    },
+    {
+        icon: snsImageFile,
+        answers: ['SNS', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
+        correct: 1
+    },
+    {
+        icon: sqsImageFile,
+        answers: ['SQS', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
+        correct: 1
     }
 ]

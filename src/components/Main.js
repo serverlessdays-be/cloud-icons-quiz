@@ -75,10 +75,14 @@ class Main extends React.Component {
     render() {
         let { nr, total, question, answers, correct, showButton, questionAnswered, displayPopup, score } = this.state;
 
+        console.log(`${JSON.stringify(data[nr])}`)
+
         return (
             <div className="container">
                 <div className="text-center">
-                    <img src="https://www.iconfinder.com/data/icons/amazon-aws-stencils/100/Storage__Content_Delivery_Amazon_S3_Bucket_with_Objects-512.png" />
+                    <div class="d-flex justify-content-center">
+                        <img src={`${data[nr - 1].icon}`} />
+                    </div>
 
 
                     <Popup style={{ display: displayPopup }} score={score} total={total} startQuiz={this.handleStartQuiz} />
@@ -87,7 +91,7 @@ class Main extends React.Component {
                     <div class="d-flex justify-content-center">
                         <div id="question">
                             <h4>Question {nr}/{total}</h4>
-                            <p>{question}</p>
+                            <p>Can you choose the correct service belonging to this icon !?</p>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
