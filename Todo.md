@@ -4,6 +4,7 @@
 - add serverlessDayss Belgium backGround
 - store icons on s3 
 - use amplify storage to store images
+- randomly set answers
 - create graphql schema with auth directives
 - store questions in dynamodb
 - use amplify to retrieve the questions
