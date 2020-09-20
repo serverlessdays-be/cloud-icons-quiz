@@ -14,3 +14,4 @@
 - add dns name to prd
 - add other favicon
 - footer should not overlap answers
+- scoring always return 0/10 :D 
