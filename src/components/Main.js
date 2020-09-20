@@ -1,6 +1,7 @@
 import React from 'react';
 import data from '../data/data';
 import Answers from './Answers';
+import Footer from './Footer';
 import Popup from './Popup';
 
 class Main extends React.Component {
@@ -100,6 +101,7 @@ class Main extends React.Component {
                     <div id="submit" class="d-flex justify-content-center">
                         {showButton ? <button className="fancy-btn" onClick={this.nextQuestion} >{nr === total ? 'Finish quiz' : 'Next question'}</button> : null}
                     </div>
+                    <Footer />
                 </div>
             </div>
         );
