@@ -1,5 +1,7 @@
 body {
     background-color: #e4e4e4;
+    background-image: url("../data/background-transparent2.png");
+    background-size: cover;
 	font-family: Open Sans;
     margin-top: 2%;
     margin-bottom: 50px;
@@ -11,7 +13,7 @@ img {
 
 
 #question {
-    background-color: #f5a442;
+    background-color: #fca503;
     color: white;
     padding: 10px;
     text-align: center;
@@ -45,7 +47,7 @@ img {
 
 #answers li {
     background-color: #fff;
-    border: 2px solid #f5a442;
+    border: 2px solid #fca503;
     min-height: 70px;
     width: 48%;
     display: flex;
@@ -55,7 +57,7 @@ img {
 }
 
 #answers li span {
-    background-color: #f5a442;
+    background-color: #fca503;
     color: #fff;
     font-size: 30px;
     flex: 75px;
@@ -153,7 +155,7 @@ img {
 }
 
 .popup h1 {
-    background-color: #f5a442;
+    background-color: #fca503;
     color: white;
     border-bottom: 1px solid #ccc;
     padding: 20px;
