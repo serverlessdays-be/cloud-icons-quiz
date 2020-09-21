@@ -1,5 +1,5 @@
 
-type Service @model @key(fields: ["serviceName"]) {
+type Service @model @auth(rules: [{ allow: owner, operations: [create, update, delete]}]) @key(fields: ["serviceName"]) {
     serviceName: String!
     icon: String!
   }
