@@ -11,7 +11,6 @@ export const createService = /* GraphQL */ `
       icon
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -25,7 +24,6 @@ export const updateService = /* GraphQL */ `
       icon
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -39,7 +37,6 @@ export const deleteService = /* GraphQL */ `
       icon
       createdAt
       updatedAt
-      owner
     }
   }
 `;

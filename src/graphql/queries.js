@@ -8,7 +8,6 @@ export const getService = /* GraphQL */ `
       icon
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -32,7 +31,6 @@ export const listServices = /* GraphQL */ `
         icon
         createdAt
         updatedAt
-        owner
       }
       nextToken
     }

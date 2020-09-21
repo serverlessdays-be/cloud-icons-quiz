@@ -1,5 +1,15 @@
 
-type Service @model @auth(rules: [{ allow: owner, operations: [create, update, delete]}]) @key(fields: ["serviceName"]) {
+type Service 
+  @model 
+  @auth(
+    rules: [
+      # The owner is allowed to do everything
+      { allow: owner }
+      # The public is only allowed to read posts
+      { allow: public, operations: [read] }
+    ]
+  )
+  @key(fields: ["serviceName"]) {
     serviceName: String!
     icon: String!
   }

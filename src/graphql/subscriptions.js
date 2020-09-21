@@ -2,35 +2,32 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateService = /* GraphQL */ `
-  subscription OnCreateService($owner: String!) {
-    onCreateService(owner: $owner) {
+  subscription OnCreateService {
+    onCreateService {
       serviceName
       icon
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const onUpdateService = /* GraphQL */ `
-  subscription OnUpdateService($owner: String!) {
-    onUpdateService(owner: $owner) {
+  subscription OnUpdateService {
+    onUpdateService {
       serviceName
       icon
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const onDeleteService = /* GraphQL */ `
-  subscription OnDeleteService($owner: String!) {
-    onDeleteService(owner: $owner) {
+  subscription OnDeleteService {
+    onDeleteService {
       serviceName
       icon
       createdAt
       updatedAt
-      owner
     }
   }
 `;
