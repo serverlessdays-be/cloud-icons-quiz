@@ -12,6 +12,7 @@ import sqsImageFile from './icons/sqs.png';
 
 export default [
     {
+        service: 'Athena',
         icon: athenaImageFile,
         answers: ['Athena', 'Kinesis', 'ElasticSearch', 'SimpleDB'],
         correct: 0

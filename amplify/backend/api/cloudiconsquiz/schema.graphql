@@ -1,0 +1,5 @@
+
+type Service @model @key(fields: ["serviceName"]) {
+    serviceName: String!
+    icon: String!
+  }

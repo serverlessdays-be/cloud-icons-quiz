@@ -1,5 +1,10 @@
 # Todo
 
+- add other favicon
+- footer should not overlap answers
+- rewrite to functional components
+- no background in admin components
+- use only components from `antd` no long `semantic-ui-react`
 - add serverlessDays Belgium next meetup on Sept 30th popup
 - add serverlessDayss Belgium backGround
 - store icons on s3 
@@ -12,5 +17,3 @@
 - add navigation bar to navigate to admin panel
 - move to serverlessDays Belgium aws cloud account
 - add dns name to prd
-- add other favicon
-- footer should not overlap answers
