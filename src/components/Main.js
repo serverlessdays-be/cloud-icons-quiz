@@ -1,4 +1,9 @@
 import React from 'react';
+
+import { listServices } from '../graphql/queries'
+import { API, graphqlOperation, Storage } from 'aws-amplify'
+
+
 import data from '../data/data';
 import Answers from './Answers';
 import Footer from './Footer';
@@ -13,7 +18,10 @@ class Main extends React.Component {
             showButton: false,
             questionAnswered: false,
             score: 0,
-            displayPopup: 'd-flex'
+            displayPopup: 'd-flex',
+            services: [],
+            names: [],
+            questionImage: null
         }
         this.nextQuestion = this.nextQuestion.bind(this);
         this.handleShowButton = this.handleShowButton.bind(this);
@@ -28,6 +36,38 @@ class Main extends React.Component {
             correct: data[nr].correct,
             nr: this.state.nr + 1
         });
+    }
+
+    async componentDidMount() {
+        console.log('invoking getAllServiceOptiosn')
+        await this.getAllServiceOptions()
+        this.state.services.forEach((service) => {
+            this.state.names.push(service.serviceName)
+        })
+        console.log(this.state.names)
+        await this.selectFile(this.state.services[0].icon)
+    }
+
+    async getAllServiceOptions() {
+        try {
+            console.log('making api call')
+            const result = await API.graphql({
+                query: listServices,
+                authMode: 'API_KEY',
+            })
+            this.state.services = result.data.listServices.items
+
+            console.log(`${JSON.stringify(this.state.services)}`)
+        } catch (err) {
+            console.log('err: ', err)
+        }
+    }
+
+    selectFile = async (key) => {
+        const result = await Storage.get(key, { level: 'public' })
+        console.log(result)
+        this.setState({ questionImage: result })
+        console.log(`Current image: ${JSON.stringify(this.state.questionImage)}`)
     }
 
     componentWillMount() {
@@ -82,27 +122,31 @@ class Main extends React.Component {
                 <div className="text-center">
                     <Popup style={{ display: displayPopup }} score={score} total={total} startQuiz={this.handleStartQuiz} />
 
-                    <div class="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center">
                         <div id="question">
                             <h4>Question {nr}/{total}</h4>
                             <p>Can you choose the correct service belonging to this icon !?</p>
                         </div>
                     </div>
 
+                    <div className="d-flex justify-content-center">
+                        <img src={this.state.questionImage} className="img-fluid" />
+                    </div>
 
-                    <div class="d-flex justify-content-center">
+
+                    <div className="d-flex justify-content-center">
                         <img src={`${data[nr - 1].icon}`} className="img-fluid" />
                     </div>
 
 
 
-                    <div class="d-flex justify-content-center">
-                        <div id="submit" class="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center">
+                        <div id="submit" className="d-flex justify-content-center">
                             {showButton ? <button className="fancy-btn" onClick={this.nextQuestion} >{nr === total ? 'Finish quiz' : 'Next question'}</button> : null}
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center">
                         <Answers answers={answers} correct={correct} showButton={this.handleShowButton} isAnswered={questionAnswered} increaseScore={this.handleIncreaseScore} />
                     </div>
                 </div>

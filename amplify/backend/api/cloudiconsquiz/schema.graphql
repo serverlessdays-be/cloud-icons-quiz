@@ -6,7 +6,7 @@ type Service
       # The owner is allowed to do everything
       { allow: owner }
       # The public is only allowed to read posts
-      { allow: public, operations: [read] }
+      { allow: public, provider: apiKey ,operations: [read] }
     ]
   )
   @key(fields: ["serviceName"]) {

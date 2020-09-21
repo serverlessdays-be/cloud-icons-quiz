@@ -6,8 +6,7 @@ import { createService } from '../graphql/mutations'
 import protectedRoute from './protectedRoute'
 import { Divider, Form, Grid, Header } from 'semantic-ui-react'
 import { Avatar, Input, Button } from 'antd'
-import { S3Image, withAuthenticator } from '@aws-amplify/ui-react'
-import { v4 as uuid } from 'uuid';
+
 
 const initialState = {
     notes: [],
@@ -31,7 +30,10 @@ function Protected(props) {
 
         const result = await Storage.vault.put(
             fileName,
-            file
+            file,
+            {
+                level: 'public'
+            }
         );
 
         setForm({ ...form, icon: result.key })
@@ -59,7 +61,7 @@ function Protected(props) {
         try {
             // TODO: check other way of syntax
             await API.graphql(graphqlOperation(createService, { input: form }))
-            console.log('successfully created note!')
+            console.log('successfully created service entry!')
             setForm(initialState.form)
         } catch (error) {
             console.log('error: ', error)
@@ -70,10 +72,8 @@ function Protected(props) {
         if (e.target.name === 'icon') {
             setForm({ ...form, icon: e.target.value })
         } else if (e.target.name === 'serviceName') {
-            console.log('updating service name')
             setForm({ ...form, serviceName: e.target.value })
         }
-        console.log(e.target.name)
     }
 
     return (

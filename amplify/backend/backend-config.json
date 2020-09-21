@@ -15,7 +15,7 @@
     }
   },
   "storage": {
-    "s3073e2f53": {
+    "icons": {
       "service": "S3",
       "providerPlugin": "awscloudformation"
     }
@@ -36,8 +36,8 @@
             {
               "authenticationType": "API_KEY",
               "apiKeyConfig": {
-                "apiKeyExpirationDays": 365,
-                "description": "public"
+                "apiKeyExpirationDays": 7,
+                "description": ""
               }
             }
           ]
