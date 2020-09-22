@@ -34,7 +34,7 @@ class Popup extends React.Component {
     createMarkup() {
         let text = ''
         if (!this.state.completed) {
-            text = "Your current score is: " + this.props.score + " out of " + this.props.total + ". Let's dive in and prove ourselves!"
+            text = "Your current score is: " + this.props.score + " out of " + this.props.total + ". Let's dive in (again) and prove ourselves!"
         } else if (this.state.completed) {
             text = 'You have (not) completed the quiz. <br /> You now have: <strong>' + this.props.score + '</strong> out of <strong>' + this.props.total + '</strong> questions right. Go for it (again)!'
         }

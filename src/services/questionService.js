@@ -38,7 +38,7 @@ function assembleQuestion(correctAnswer, icon, answers, indexOfCorrectAnswer) {
 }
 
 export function createListOfAnswers(serviceNames, correctAnswer) {
-    const wrongAnswers = get3RandomElementsFromListExceptFor(serviceNames)
+    const wrongAnswers = get3RandomElementsFromListExceptFor(serviceNames, correctAnswer)
     let answers = [...wrongAnswers, correctAnswer]
     answers = shuffle(answers)
     return answers

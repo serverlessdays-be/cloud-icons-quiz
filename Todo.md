@@ -1,6 +1,7 @@
 # Todo
 
 - add other favicon
+- fix popup that currently does change text when completed prop changes
 - footer should not overlap answers
 - rewrite to functional components
 - no background in admin components
