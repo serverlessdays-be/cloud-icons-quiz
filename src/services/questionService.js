@@ -1,0 +1,119 @@
+import { API, graphqlOperation, Storage } from 'aws-amplify'
+
+
+const getNewListOfQuestions = () => {
+    const services = getAllServiceOptions()
+    const newQuestions = generateQuestionsFromListOfServices(services)
+}
+
+
+const getAllServiceOptions = async () => {
+    try {
+        console.log('making api call')
+        const result = await API.graphql({
+            query: listServices,
+            authMode: 'API_KEY',
+        })
+        const services = result.data.listServices.items
+        console.log(`${JSON.stringify(services)}`)
+
+        return services
+    } catch (err) {
+        console.log('err: ', err)
+    }
+}
+
+const generateQuestionsFromListOfServices = (services) => {
+    const indecesArray = get10RandomIndecesFromList(services)
+    const serviceNames = getServiceNamesFromServices(services)
+
+    const questions = []
+    for (let step = 0; step < 10; step++) {
+        const service = services[indecesArray[step]]
+
+        const correctAnswer = service.serviceName
+
+        let answers = createListOfAnswers(serviceNames, correctAnswer)
+
+        let indexOfCorrectAnswer = answers.indexOf(correctAnswer)
+        const icon = service.icon
+
+        const question = assembleQuestion(correctAnswer, icon, answers, indexOfCorrectAnswer)
+        questions.push(question)
+    }
+    return questions
+}
+
+function assembleQuestion(correctAnswer, icon, answers, indexOfCorrectAnswer) {
+    return {
+        'service': correctAnswer,
+        'icon': icon,
+        'answers': answers,
+        'correct': indexOfCorrectAnswer
+    }
+}
+
+function createListOfAnswers(serviceNames, correctAnswer) {
+    const wrongAnswers = get3RandomElementsFromListExceptFor(serviceNames)
+    let answers = [...wrongAnswers, correctAnswer]
+    answers = shuffle(answers)
+    return answers
+}
+
+function getServiceNamesFromServices(services) {
+    const serviceNames = []
+    services.forEach(service => {
+        serviceNames.push(service.serviceName)
+    })
+    return serviceNames
+}
+
+function get10RandomIndecesFromList(list) {
+    var indecesArray = [];
+    while (indecesArray.length < 10) {
+        var r = Math.floor(Math.random() * list.length);
+        if (indecesArray.indexOf(r) === -1) indecesArray.push(r);
+    }
+    return indecesArray;
+}
+
+function get3RandomElementsFromListExceptFor(list, except) {
+    const elements = []
+    // TODO: don't pick an element twice
+    // TODO: dont't pick the right one again
+    for (let step = 0; step < 3; step++) {
+        let index;
+        do {
+            index = Math.floor(Math.random() * list.length)
+        } while ((list[index] === except) || elements.includes(list[index]))
+
+        const element = list[index]
+        elements.push(element)
+    }
+    return elements
+}
+
+function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+
+
+const forgotPassword = () => {
+    return true;
+}
+
+
+
+module.exports = {
+    forgotPassword,
+    get10RandomIndecesFromList,
+    getServiceNamesFromServices,
+    get3RandomElementsFromListExceptFor,
+    createListOfAnswers,
+    generateQuestionsFromListOfServices
+}
