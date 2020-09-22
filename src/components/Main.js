@@ -1,13 +1,17 @@
 import React from 'react';
 
-import { listServices } from '../graphql/queries'
+
 import { API, graphqlOperation, Storage } from 'aws-amplify'
+
+import { getAllServiceOptions } from '../services/serviceApiIntegration'
+import { getNewListOfQuestions } from '../services/questionService'
 
 
 import data from '../data/data';
 import Answers from './Answers';
 import Footer from './Footer';
 import Popup from './Popup';
+
 
 class Main extends React.Component {
     constructor(props) {
@@ -19,8 +23,8 @@ class Main extends React.Component {
             questionAnswered: false,
             score: 0,
             displayPopup: 'd-flex',
-            services: [],
             names: [],
+            questions: null,
             questionImage: null
         }
         this.nextQuestion = this.nextQuestion.bind(this);
@@ -31,48 +35,29 @@ class Main extends React.Component {
 
     pushData(nr) {
         this.setState({
-            question: data[nr].question,
-            answers: [data[nr].answers[0], data[nr].answers[1], data[nr].answers[2], data[nr].answers[3]],
-            correct: data[nr].correct,
+            questionImage: this.selectFile(this.state.questions[nr].icon),
+            question: this.state.questions[nr].question,
+            answers: [this.state.questions[nr].answers[0], this.state.questions[nr].answers[1], this.state.questions[nr].answers[2], this.state.questions[nr].answers[3]],
+            correct: this.state.questions[nr].correct,
             nr: this.state.nr + 1
         });
     }
 
     async componentDidMount() {
-        console.log('invoking getAllServiceOptiosn')
-        await this.getAllServiceOptions()
-        this.state.services.forEach((service) => {
-            this.state.names.push(service.serviceName)
-        })
-        console.log(this.state.names)
-        await this.selectFile(this.state.services[0].icon)
+
+        this.state.questions = await getNewListOfQuestions()
+        console.log(this.state.questions)
+
+        let { nr } = this.state;
+        this.pushData(nr);
     }
 
-    async getAllServiceOptions() {
-        try {
-            console.log('making api call')
-            const result = await API.graphql({
-                query: listServices,
-                authMode: 'API_KEY',
-            })
-            this.state.services = result.data.listServices.items
-
-            console.log(`${JSON.stringify(this.state.services)}`)
-        } catch (err) {
-            console.log('err: ', err)
-        }
-    }
 
     selectFile = async (key) => {
         const result = await Storage.get(key, { level: 'public' })
         console.log(result)
         this.setState({ questionImage: result })
         console.log(`Current image: ${JSON.stringify(this.state.questionImage)}`)
-    }
-
-    componentWillMount() {
-        let { nr } = this.state;
-        this.pushData(nr);
     }
 
     nextQuestion() {
@@ -129,26 +114,24 @@ class Main extends React.Component {
                         </div>
                     </div>
 
-                    <div className="d-flex justify-content-center">
-                        <img src={this.state.questionImage} className="img-fluid" />
-                    </div>
+                    {this.state.questions ? (
+                        <div>
+                            <div className="d-flex justify-content-center">
+                                <img src={this.state.questionImage} className="img-fluid" />
+                            </div>
 
+                            <div className="d-flex justify-content-center">
+                                <div id="submit" className="d-flex justify-content-center">
+                                    {showButton ? <button className="fancy-btn" onClick={this.nextQuestion} >{nr === total ? 'Finish quiz' : 'Next question'}</button> : null}
+                                </div>
+                            </div>
 
-                    <div className="d-flex justify-content-center">
-                        <img src={`${data[nr - 1].icon}`} className="img-fluid" />
-                    </div>
-
-
-
-                    <div className="d-flex justify-content-center">
-                        <div id="submit" className="d-flex justify-content-center">
-                            {showButton ? <button className="fancy-btn" onClick={this.nextQuestion} >{nr === total ? 'Finish quiz' : 'Next question'}</button> : null}
+                            <div className="d-flex justify-content-center">
+                                <Answers answers={answers} correct={correct} showButton={this.handleShowButton} isAnswered={questionAnswered} increaseScore={this.handleIncreaseScore} />
+                            </div>
                         </div>
-                    </div>
+                    ) : null}
 
-                    <div className="d-flex justify-content-center">
-                        <Answers answers={answers} correct={correct} showButton={this.handleShowButton} isAnswered={questionAnswered} increaseScore={this.handleIncreaseScore} />
-                    </div>
                 </div>
                 <Footer />
 

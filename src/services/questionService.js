@@ -1,29 +1,13 @@
-import { API, graphqlOperation, Storage } from 'aws-amplify'
+import { getAllServiceOptions } from './serviceApiIntegration'
 
 
-const getNewListOfQuestions = () => {
-    const services = getAllServiceOptions()
+export const getNewListOfQuestions = async () => {
+    const services = await getAllServiceOptions()
     const newQuestions = generateQuestionsFromListOfServices(services)
+    return newQuestions
 }
 
-
-const getAllServiceOptions = async () => {
-    try {
-        console.log('making api call')
-        const result = await API.graphql({
-            query: listServices,
-            authMode: 'API_KEY',
-        })
-        const services = result.data.listServices.items
-        console.log(`${JSON.stringify(services)}`)
-
-        return services
-    } catch (err) {
-        console.log('err: ', err)
-    }
-}
-
-const generateQuestionsFromListOfServices = (services) => {
+export const generateQuestionsFromListOfServices = (services) => {
     const indecesArray = get10RandomIndecesFromList(services)
     const serviceNames = getServiceNamesFromServices(services)
 
@@ -53,14 +37,14 @@ function assembleQuestion(correctAnswer, icon, answers, indexOfCorrectAnswer) {
     }
 }
 
-function createListOfAnswers(serviceNames, correctAnswer) {
+export function createListOfAnswers(serviceNames, correctAnswer) {
     const wrongAnswers = get3RandomElementsFromListExceptFor(serviceNames)
     let answers = [...wrongAnswers, correctAnswer]
     answers = shuffle(answers)
     return answers
 }
 
-function getServiceNamesFromServices(services) {
+export function getServiceNamesFromServices(services) {
     const serviceNames = []
     services.forEach(service => {
         serviceNames.push(service.serviceName)
@@ -68,7 +52,7 @@ function getServiceNamesFromServices(services) {
     return serviceNames
 }
 
-function get10RandomIndecesFromList(list) {
+export function get10RandomIndecesFromList(list) {
     var indecesArray = [];
     while (indecesArray.length < 10) {
         var r = Math.floor(Math.random() * list.length);
@@ -77,7 +61,7 @@ function get10RandomIndecesFromList(list) {
     return indecesArray;
 }
 
-function get3RandomElementsFromListExceptFor(list, except) {
+export function get3RandomElementsFromListExceptFor(list, except) {
     const elements = []
     // TODO: don't pick an element twice
     // TODO: dont't pick the right one again
@@ -103,17 +87,7 @@ function shuffle(a) {
 
 
 
-const forgotPassword = () => {
+export const forgotPassword = () => {
     return true;
 }
 
-
-
-module.exports = {
-    forgotPassword,
-    get10RandomIndecesFromList,
-    getServiceNamesFromServices,
-    get3RandomElementsFromListExceptFor,
-    createListOfAnswers,
-    generateQuestionsFromListOfServices
-}

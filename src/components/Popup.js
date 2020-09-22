@@ -8,7 +8,8 @@ class Popup extends React.Component {
             time: 'start',
             title: 'Welcome to Cloud Icon Quiz',
             text: "Let's dive in!",
-            buttonText: 'Start the quiz'
+            buttonText: 'Start the quiz',
+            completed: false
         };
 
         this.popupHandle = this.popupHandle.bind(this);
@@ -30,13 +31,13 @@ class Popup extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            text: 'You have completed the quiz. <br /> You got: <strong>' + this.props.score + '</strong> out of <strong>' + this.props.total + '</strong> questions right.'
-        })
-    }
-
-    createMarkup(text) {
+    createMarkup() {
+        let text = ''
+        if (!this.state.completed) {
+            text = "Let's dive in!"
+        } else if (this.state.completed) {
+            text = 'You have (not) completed the quiz. <br /> You now have: <strong>' + this.props.score + '</strong> out of <strong>' + this.props.total + '</strong> questions right. Go for it (again)!'
+        }
         return { __html: text };
     }
 
