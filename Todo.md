@@ -5,6 +5,7 @@
 - footer should not overlap answers
 - rewrite to functional components
 - no background in admin components
+- we do not need a full page refresh on start new quiz
 - Do not display SignOut component when not signed in
 - use only components from `antd` no long `semantic-ui-react`
 - add serverlessDays Belgium next meetup on Sept 30th popup
