@@ -6,7 +6,7 @@ class Popup extends React.Component {
 
         this.state = {
             time: 'start',
-            title: 'Welcome to Cloud Icon Quiz',
+            title: 'Welcome to the Serverless Icon Quiz',
             text: "Let's dive in!",
             buttonText: 'Start the quiz',
             completed: false
@@ -54,7 +54,11 @@ class Popup extends React.Component {
 
                     <div className="popup">
                         <h1>{title}</h1>
-                        <p>{this.props.score !== 0 ? this.props.score + ' out of ' + this.props.total : "Let's dive in and prove ourselves!"}</p>
+                        <p>{this.props.score !== 0 ? this.props.score + ' out of ' + this.props.total : "Let's dive in and prove ourselves! "}</p>
+                        <p>
+                            Interested in more serverless? Join: <a href="https://www.meetup.com/nl-NL/ServerlessDays-Belgium/events/272333878/" target="_blank" rel="noopener noreferrer">
+                                <strong>ServerlessDaysBE!</strong>
+                            </a></p>
                         <button className="fancy-btn" onClick={this.popupHandle}>{buttonText}</button>
                     </div>
                 </div>
