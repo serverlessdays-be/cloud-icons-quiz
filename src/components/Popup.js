@@ -44,7 +44,7 @@ class Popup extends React.Component {
 
     render() {
 
-        let { title, text, buttonText } = this.state;
+        let { title, buttonText } = this.state;
 
         let { style } = this.props;
 

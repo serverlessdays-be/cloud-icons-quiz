@@ -1,4 +1,4 @@
-import { API, graphqlOperation, Storage } from 'aws-amplify'
+import { API } from 'aws-amplify'
 import { listServices } from '../graphql/queries'
 
 

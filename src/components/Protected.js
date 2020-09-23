@@ -1,11 +1,11 @@
-import React, { useState, useReducer } from 'react'
+import React, { useState } from 'react'
 import { API, graphqlOperation } from 'aws-amplify/'
 import Storage from '@aws-amplify/storage'
 import Container from './Container'
 import { createService } from '../graphql/mutations'
 import protectedRoute from './protectedRoute'
-import { Divider, Form, Grid, Header } from 'semantic-ui-react'
-import { Avatar, Input, Button } from 'antd'
+import { Form } from 'semantic-ui-react'
+import { Input, Button } from 'antd'
 
 
 const initialState = {
