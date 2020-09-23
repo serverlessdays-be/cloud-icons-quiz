@@ -1,12 +1,9 @@
 import React from 'react';
 
-
-import { API, graphqlOperation, Storage } from 'aws-amplify'
+import { Storage } from 'aws-amplify'
 
 import { getNewListOfQuestions } from '../services/questionService'
 
-
-import data from '../data/data';
 import Answers from './Answers';
 import Footer from './Footer';
 import Popup from './Popup';
@@ -17,7 +14,7 @@ class Main extends React.Component {
         super(props);
         this.state = {
             nr: 0,
-            total: data.length,
+            total: 10,
             showButton: false,
             questionAnswered: false,
             score: 0,
@@ -59,7 +56,7 @@ class Main extends React.Component {
     }
 
     nextQuestion() {
-        let { nr, total, score } = this.state;
+        let { nr, total } = this.state;
 
         if (nr === total) {
             this.setState({
@@ -96,7 +93,7 @@ class Main extends React.Component {
     }
 
     render() {
-        let { nr, total, question, answers, correct, showButton, questionAnswered, displayPopup, score } = this.state;
+        let { nr, total, answers, correct, showButton, questionAnswered, displayPopup, score } = this.state;
 
         return (
             <div className="container">
