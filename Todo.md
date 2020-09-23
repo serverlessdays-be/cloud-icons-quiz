@@ -20,4 +20,4 @@
 - add navigation bar to navigate to admin panel
 - move to serverlessDays Belgium aws cloud account
 - add dns name to prd
-- 
+- Layout on amplify hosting should be same as local

@@ -18,7 +18,7 @@ amplify publish
 
 npm start
 ```
-* run unit tests: `npm run test-dev`
+* run unit tests: `npm run test-dev`.
 
 
 
