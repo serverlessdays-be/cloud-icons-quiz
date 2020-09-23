@@ -2,7 +2,7 @@
 
 Test your knowledge of the different serverless cloud services!  
 
-Created by [ServerlessDays Belgium](https://www.meetup.com/nl-NL/ServerlessDays-Belgium)
+Created by [ServerlessDays Belgium](https://www.meetup.com/nl-NL/ServerlessDays-Belgium).
 
 ![ServerlessDaysBEL](git/img/icon.png)
 
