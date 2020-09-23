@@ -19,7 +19,6 @@ class Main extends React.Component {
             questionAnswered: false,
             score: 0,
             displayPopup: 'd-flex',
-            names: [],
             questions: null,
             questionImage: null
         }
