@@ -42,7 +42,7 @@ function Protected(props) {
     }
 
     const upload = async (e) => {
-        console.log('uploading image')
+        console.log('Uploading image..')
         setUploading(true)
 
         let files = [];

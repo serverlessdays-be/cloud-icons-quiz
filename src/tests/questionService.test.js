@@ -36,7 +36,6 @@ describe("get3RandomElementsFromListExceptFor()", () => {
         const serviceNames = ['athena', 'dynamodb', 'fargate', 'glue']
         const correctServiceName = 'athena'
         const result = get3RandomElementsFromListExceptFor(serviceNames, correctServiceName)
-        console.log(result)
         expect(containsOnlyUniqueValues(result)).toBeTruthy()
     })
 })

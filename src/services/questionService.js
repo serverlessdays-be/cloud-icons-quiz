@@ -3,8 +3,11 @@ import { getAllServiceOptions } from './serviceApiIntegration'
 
 export const getNewListOfQuestions = async () => {
     const services = await getAllServiceOptions()
-    const newQuestions = generateQuestionsFromListOfServices(services)
-    return newQuestions
+    if (services) {
+        const newQuestions = generateQuestionsFromListOfServices(services)
+        return newQuestions
+    }
+
 }
 
 export const generateQuestionsFromListOfServices = (services) => {

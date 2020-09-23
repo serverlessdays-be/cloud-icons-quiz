@@ -16,11 +16,9 @@ function Answers(props) {
 
             if (answer - 1 === correct) {
                 updatedClassNames[answer - 1] = 'right';
-                console.log('increasing score')
                 increaseScore();
             }
             else {
-                console.log('wrong')
                 updatedClassNames[answer - 1] = 'wrong';
                 updatedClassNames[correct] = 'right'
             }

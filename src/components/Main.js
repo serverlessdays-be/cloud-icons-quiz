@@ -3,7 +3,6 @@ import React from 'react';
 
 import { API, graphqlOperation, Storage } from 'aws-amplify'
 
-import { getAllServiceOptions } from '../services/serviceApiIntegration'
 import { getNewListOfQuestions } from '../services/questionService'
 
 
@@ -46,18 +45,17 @@ class Main extends React.Component {
     async componentDidMount() {
 
         this.state.questions = await getNewListOfQuestions()
-        console.log(this.state.questions)
 
         let { nr } = this.state;
-        this.pushData(nr);
+        if (this.state.questions) {
+            this.pushData(nr);
+        }
     }
 
 
     selectFile = async (key) => {
         const result = await Storage.get(key, { level: 'public' })
-        console.log(result)
         this.setState({ questionImage: result })
-        console.log(`Current image: ${JSON.stringify(this.state.questionImage)}`)
     }
 
     nextQuestion() {
@@ -85,7 +83,6 @@ class Main extends React.Component {
     }
 
     handleStartQuiz() {
-        console.log('handling start')
         this.setState({
             displayPopup: 'none',
             nr: 1
@@ -93,7 +90,6 @@ class Main extends React.Component {
     }
 
     handleIncreaseScore() {
-        console.log('increasing score')
         this.setState({
             score: this.state.score + 1
         });
@@ -130,7 +126,12 @@ class Main extends React.Component {
                                 <Answers answers={answers} correct={correct} showButton={this.handleShowButton} isAnswered={questionAnswered} increaseScore={this.handleIncreaseScore} />
                             </div>
                         </div>
-                    ) : null}
+                    ) :
+                        <div className="d-flex justify-content-center">
+                            <div id="submit" className="d-flex justify-content-center">
+                                <p><i>Add questions as an admin or turn on your internet.</i></p>
+                            </div>
+                        </div>}
 
                 </div>
                 <Footer />
