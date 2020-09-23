@@ -4,7 +4,7 @@ Test your knowledge of the different serverless cloud services!
 
 ![ServerlessDaysBEL](git/img/icon.png)
 
-Backend build with and frontend hosted with AWS Amplify.
+Backend build with and frontend hosted with [AWS Amplify](https://docs.amplify.aws/start/q/integration/js).
 
 
 ## Development
@@ -20,5 +20,5 @@ npm start
 
 
 
-Navbar based on [full-stack-serverless](https://github.com/dabit3/full-stack-serverless-code/tree/master/basic-authentication).
-Frontend based on, and credits to: [https://github.com/florinpop17/quiz-app](https://github.com/florinpop17/quiz-app)
+Navbar based on [full-stack-serverless](https://github.com/dabit3/full-stack-serverless-code/tree/master/basic-authentication).  
+Frontend based on [https://github.com/florinpop17/quiz-app](https://github.com/florinpop17/quiz-app).
