@@ -1,16 +1,17 @@
 import { getAllServiceOptions } from './serviceApiIntegration'
 
-
 export const getNewListOfQuestions = async () => {
     const services = await getAllServiceOptions()
     if (services) {
         const newQuestions = generateQuestionsFromListOfServices(services)
         return newQuestions
+    } else {
+        return null
     }
-
 }
 
 export const generateQuestionsFromListOfServices = (services) => {
+    if (services.length < 10) return null
     const indecesArray = get10RandomIndecesFromList(services)
     const serviceNames = getServiceNamesFromServices(services)
 

@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "cloudiconsquiz93529580_identitypool_93529580",
-    "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "cloudi93529580",
-    "userPoolName": "cloudiconsquiz93529580_userpool_93529580",
+    "identityPoolName": "cloudiconsquiza53e3288_identitypool_a53e3288",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "cloudia53e3288",
+    "userPoolName": "cloudiconsquiza53e3288_userpool_a53e3288",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "cloudi93529580_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "cloudia53e3288_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "93529580",
-    "resourceName": "cloudiconsquiz93529580",
+    "sharedId": "a53e3288",
+    "resourceName": "cloudiconsquiza53e3288",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [

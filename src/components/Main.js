@@ -2,7 +2,9 @@ import React from 'react';
 
 import { Storage } from 'aws-amplify'
 
+
 import { getNewListOfQuestions } from '../services/questionService'
+import { getAllServiceOptions } from '../services/serviceApiIntegration'
 
 import Answers from './Answers';
 import Footer from './Footer';
@@ -20,8 +22,10 @@ class Main extends React.Component {
             score: 0,
             displayPopup: 'd-flex',
             questions: null,
-            questionImage: null
+            questionImage: null,
+            isLoading: true
         }
+
         this.nextQuestion = this.nextQuestion.bind(this);
         this.handleShowButton = this.handleShowButton.bind(this);
         this.handleStartQuiz = this.handleStartQuiz.bind(this);
@@ -39,10 +43,13 @@ class Main extends React.Component {
     }
 
     async componentDidMount() {
+        const newListOfQuestions = await getNewListOfQuestions()
+        this.setState({ questions: newListOfQuestions })
 
-        this.state.questions = await getNewListOfQuestions()
+        this.setState({ isLoading: false });
 
         let { nr } = this.state;
+
         if (this.state.questions) {
             this.pushData(nr);
         }
@@ -92,9 +99,15 @@ class Main extends React.Component {
     }
 
     render() {
-        let { nr, total, answers, correct, showButton, questionAnswered, displayPopup, score } = this.state;
+        let { nr, total, answers, correct, showButton, questionAnswered, displayPopup, score, isLoading } = this.state;
+
+        if (isLoading) {
+            return <div className="App"><b>Loading...</b></div>;
+        }
 
         return (
+
+
             <div className="container">
                 <div className="text-center">
                     <Popup style={{ display: displayPopup }} score={score} total={total} startQuiz={this.handleStartQuiz} />

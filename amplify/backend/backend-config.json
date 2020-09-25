@@ -7,7 +7,7 @@
     }
   },
   "auth": {
-    "cloudiconsquiz93529580": {
+    "cloudiconsquiza53e3288": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -29,15 +29,15 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authcloudiconsquiz93529580"
+              "userPoolId": "authcloudiconsquiza53e3288"
             }
           },
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "API_KEY",
               "apiKeyConfig": {
-                "apiKeyExpirationDays": 7,
-                "description": ""
+                "apiKeyExpirationDays": 365,
+                "description": "public"
               }
             }
           ]
