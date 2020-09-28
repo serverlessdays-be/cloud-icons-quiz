@@ -1,13 +1,11 @@
 # Todo
 
-- add other favicon
-- fix popup that currently does change text when completed prop changes
-- footer should not overlap answers
 - rewrite to functional components
 - no background in admin components
+- refactor project structure
 - we do not need a full page refresh on start new quiz
 - Do not display SignOut component when not signed in
-- use only components from `antd` no long `semantic-ui-react`
+- use only components from `antd` no longer `semantic-ui-react`
 - add serverlessDays Belgium next meetup on Sept 30th popup
 - add serverlessDayss Belgium backGround
 - store icons on s3 

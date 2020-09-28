@@ -60,14 +60,14 @@
       "AmplifyAppId": "d2wwnw5r31z4qz"
     },
     "categories": {
-      "auth": {
-        "cloudiconsquiz93529580": {}
-      },
       "hosting": {
         "amplifyhosting": {
           "appId": "d2wwnw5r31z4qz",
           "type": "manual"
         }
+      },
+      "auth": {
+        "cloudiconsquiza53e3288": {}
       }
     }
   },
