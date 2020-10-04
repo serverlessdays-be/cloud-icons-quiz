@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react'
-import { Auth } from 'aws-amplify'
+import React, { useEffect } from "react";
+import { Auth } from "aws-amplify";
 
-const protectedRoute = (Comp, route = '/profile') => (props) => {
-    async function checkAuthState() {
-        try {
-            await Auth.currentAuthenticatedUser()
-        } catch (error) {
-            props.history.push(route)
-        }
+const protectedRoute = (Comp, route = "/admin") => (props) => {
+  async function checkAuthState() {
+    try {
+      await Auth.currentAuthenticatedUser();
+    } catch (error) {
+      props.history.push(route);
     }
+  }
 
-    useEffect(() => {
-        checkAuthState()
-    }, [])
+  useEffect(() => {
+    checkAuthState();
+  }, []);
 
-    return <Comp {...props} />
-}
+  return <Comp {...props} />;
+};
 
-export default protectedRoute
+export default protectedRoute;

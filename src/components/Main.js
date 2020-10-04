@@ -142,7 +142,11 @@ class Main extends React.Component {
           {this.state.questions ? (
             <div>
               <div className="d-flex justify-content-center">
-                <img src={this.state.questionImage} className="img-fluid" />
+                <img
+                  src={this.state.questionImage}
+                  alt="could not display"
+                  className="img-fluid"
+                />
               </div>
 
               <div className="d-flex justify-content-center">

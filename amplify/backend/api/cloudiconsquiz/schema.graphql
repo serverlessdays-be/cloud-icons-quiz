@@ -1,11 +1,12 @@
+
 type Service 
   @model 
   @auth(
     rules: [
-    # Defaults to use the "owner" field.
-    {allow: owner},
-    # Next allow public access with an API Key
-    {allow: public, provider: apiKey, operations: [read]}
+      # The owner is allowed to do everything
+      { allow: owner }
+      # The public is only allowed to read posts
+      { allow: public, provider: apiKey ,operations: [read] }
     ]
   )
   @key(fields: ["serviceName"]) {

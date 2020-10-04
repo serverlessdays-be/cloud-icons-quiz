@@ -1,17 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 // import './index.css';
-import './styles/app.css'
+import "./styles/app.css";
 
-import Router from './components/Router';
+import Router from "./components/Router";
 
-import 'antd/dist/antd.css'
+import "antd/dist/antd.css";
 
-import Amplify from 'aws-amplify'
-import config from './aws-exports'
-Amplify.configure(config)
+import Amplify from "aws-amplify";
+import config from "./aws-exports";
 
-ReactDOM.render(
-  <Router />,
-  document.getElementById("root")
-);
+Amplify.configure(config);
+
+ReactDOM.render(<Router />, document.getElementById("root"));
