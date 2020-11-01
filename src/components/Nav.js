@@ -48,22 +48,10 @@ const Nav = (props) => {
             <strong>ServerlessDaysBE!</strong>
           </a>
         </Menu.Item>
-        <Menu.Item key="admin">
-          <Link to="/admin">
-            <ProfileOutlined />
-            Admin
-          </Link>
-        </Menu.Item>
         <Menu.Item key="createQuestion">
           <Link to="/question/new">
             <FileProtectOutlined />
             Create Question
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="protected">
-          <Link to="/protected">
-            <FileProtectOutlined />
-            Protected
           </Link>
         </Menu.Item>
         {user ? (
