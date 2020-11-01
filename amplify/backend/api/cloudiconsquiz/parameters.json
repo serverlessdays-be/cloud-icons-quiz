@@ -1,11 +1,8 @@
 {
-    "AppSyncApiName": "cloudiconsquiz",
-    "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": false,
-    "AuthCognitoUserPoolId": {
-        "Fn::GetAtt": [
-            "authcloudiconsquiz93529580",
-            "Outputs.UserPoolId"
-        ]
-    }
+  "AppSyncApiName": "cloudiconsquiz",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": ["authcloudiconsquiz93529580", "Outputs.UserPoolId"]
+  }
 }

@@ -4,11 +4,7 @@ import { Hub } from "@aws-amplify/core";
 
 import { Link } from "react-router-dom";
 import { Menu } from "antd";
-import {
-  HomeOutlined,
-  ProfileOutlined,
-  FileProtectOutlined,
-} from "@ant-design/icons";
+import { HomeOutlined, FileProtectOutlined } from "@ant-design/icons";
 
 import { AmplifySignOut } from "@aws-amplify/ui-react";
 
