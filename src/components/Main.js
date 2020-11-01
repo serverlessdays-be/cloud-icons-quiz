@@ -46,8 +46,8 @@ class Main extends React.Component {
 
   async componentDidMount() {
     const newListOfQuestions = await getNewListOfQuestions();
-    this.setState({ questions: newListOfQuestions, isLoading: false });
 
+    this.setState({ questions: newListOfQuestions });
     let { nr } = this.state;
 
     if (this.state.questions) {
