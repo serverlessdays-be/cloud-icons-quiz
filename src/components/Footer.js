@@ -11,9 +11,8 @@ class Footer extends React.Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            ServerlessDays Belgium
+            ServerlessDays Belgium.
           </a>
-          . Sept 30th!
         </p>
         <p>
           View on{" "}

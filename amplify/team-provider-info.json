@@ -24,54 +24,6 @@
       }
     }
   },
-  "prd": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-cloudiconsquiz-prd-121129-authRole",
-      "UnauthRoleArn": "arn:aws:iam::262262740757:role/amplify-cloudiconsquiz-prd-121129-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::262262740757:role/amplify-cloudiconsquiz-prd-121129-authRole",
-      "Region": "eu-west-1",
-      "DeploymentBucketName": "amplify-cloudiconsquiz-prd-121129-deployment",
-      "UnauthRoleName": "amplify-cloudiconsquiz-prd-121129-unauthRole",
-      "StackName": "amplify-cloudiconsquiz-prd-121129",
-      "StackId": "arn:aws:cloudformation:eu-west-1:262262740757:stack/amplify-cloudiconsquiz-prd-121129/a81dd620-fb29-11ea-8241-0670bd49f898",
-      "AmplifyAppId": "d1t1bbgej39zp6"
-    },
-    "categories": {
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "d1t1bbgej39zp6",
-          "type": "manual"
-        }
-      },
-      "auth": {
-        "cloudiconsquiz93529580": {}
-      }
-    }
-  },
-  "qa": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-cloudiconsquiz-qa-212519-authRole",
-      "UnauthRoleArn": "arn:aws:iam::262262740757:role/amplify-cloudiconsquiz-qa-212519-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::262262740757:role/amplify-cloudiconsquiz-qa-212519-authRole",
-      "Region": "eu-west-1",
-      "DeploymentBucketName": "amplify-cloudiconsquiz-qa-212519-deployment",
-      "UnauthRoleName": "amplify-cloudiconsquiz-qa-212519-unauthRole",
-      "StackName": "amplify-cloudiconsquiz-qa-212519",
-      "StackId": "arn:aws:cloudformation:eu-west-1:262262740757:stack/amplify-cloudiconsquiz-qa-212519/b01da420-fe9b-11ea-9a99-0ae2455f7acf",
-      "AmplifyAppId": "d1t1bbgej39zp6"
-    },
-    "categories": {
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "d1t1bbgej39zp6",
-          "type": "manual"
-        }
-      },
-      "auth": {
-        "cloudiconsquiza53e3288": {}
-      }
-    }
-  },
   "prod": {
     "awscloudformation": {
       "AuthRoleName": "amplify-cloudiconsquiz-prod-212116-authRole",

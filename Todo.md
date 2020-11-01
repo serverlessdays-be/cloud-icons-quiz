@@ -6,7 +6,6 @@
 - we do not need a full page refresh on start new quiz
 - Do not display SignOut component when not signed in
 - use only components from `antd` no longer `semantic-ui-react`
-- add serverlessDays Belgium next meetup on Sept 30th popup
 - add serverlessDayss Belgium backGround
 - store icons on s3 
 - use amplify storage to store images
