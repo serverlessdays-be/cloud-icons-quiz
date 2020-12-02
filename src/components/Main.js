@@ -1,188 +1,121 @@
-import React from "react";
-
-import { Storage } from "aws-amplify";
+import React, { useState, useEffect } from "react";
 
 import { getNewListOfQuestions } from "../services/questionService";
 
 import Answers from "./Answers";
 import Footer from "./Footer";
 import Popup from "./Popup";
+import QuizHeader from "./play/QuizHeader";
+import ServiceImage from "./play/ServiceImage";
+import QuizButtons from "./play/QuizButtons";
+import NoQuestionsFound from "./play/NoQuestionsFound";
+import LoadingSpinner from "./LoadingSpinner";
 
-class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      nr: 0,
-      total: 10,
-      showButton: false,
-      questionAnswered: false,
-      score: 0,
-      displayPopup: "d-flex",
-      questions: null,
-      questionImage: null,
-      isLoading: true,
+const TOTAL_NUMBER_OF_QUESTIONS = 10;
+
+const Main = () => {
+  const [questions, setQuestions] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [question, setQuestion] = useState();
+  const [answers, setAnswers] = useState();
+  const [correct, setCorrect] = useState();
+  const [nr, setNr] = useState();
+  const [playing, setPlaying] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+  const [questionAnswered, setQuestionAnswered] = useState(false);
+  const [score, setScore] = useState(0);
+  const [displayPopup, setDisplayPopup] = useState("d-flex");
+
+  useEffect(() => {
+    const getQuestions = async () => {
+      const newListOfQuestions = await getNewListOfQuestions();
+      setQuestions(newListOfQuestions);
+      console.log("updating number");
+      setNr(0);
     };
+    getQuestions();
+  }, []);
 
-    this.nextQuestion = this.nextQuestion.bind(this);
-    this.handleShowButton = this.handleShowButton.bind(this);
-    this.handleStartQuiz = this.handleStartQuiz.bind(this);
-    this.handleIncreaseScore = this.handleIncreaseScore.bind(this);
-  }
-
-  pushData(nr) {
-    this.setState({
-      questionImage: this.selectFile(this.state.questions[nr].icon),
-      question: this.state.questions[nr].question,
-      answers: [
-        this.state.questions[nr].answers[0],
-        this.state.questions[nr].answers[1],
-        this.state.questions[nr].answers[2],
-        this.state.questions[nr].answers[3],
-      ],
-      correct: this.state.questions[nr].correct,
-      nr: this.state.nr + 1,
-    });
-  }
-
-  async componentDidMount() {
-    const newListOfQuestions = await getNewListOfQuestions();
-
-    this.setState({ questions: newListOfQuestions });
-    let { nr } = this.state;
-
-    if (this.state.questions) {
-      this.pushData(nr);
+  useEffect(() => {
+    console.log("number is: ", nr);
+    if (nr >= 0) {
+      console.log("pushing data");
+      pushData();
+      setIsLoading(false);
     }
-    this.setState({ isLoading: false });
-  }
+  }, [nr]);
 
-  selectFile = async (key) => {
-    const result = await Storage.get(key, { level: "public" });
-    this.setState({ questionImage: result });
+  const pushData = () => {
+    setQuestion(questions[nr]);
+    setAnswers(questions[nr].answers);
+    setCorrect(questions[nr].correct);
   };
 
-  nextQuestion() {
-    let { nr, total } = this.state;
-
-    if (nr === total) {
-      this.setState({
-        displayPopup: "flex",
-      });
+  const nextQuestion = () => {
+    if (nr === TOTAL_NUMBER_OF_QUESTIONS - 1) {
+      setDisplayPopup("flex");
+      setPlaying(false);
     } else {
-      this.pushData(nr);
-      this.setState({
-        showButton: false,
-        questionAnswered: false,
-      });
+      setQuestionAnswered(false);
+      setShowButton(false);
+      setNr(nr + 1);
     }
+  };
+
+  const handleShowButton = () => {
+    setShowButton(true);
+    setQuestionAnswered(true);
+  };
+
+  const handleStartQuiz = () => {
+    setDisplayPopup("none");
+    setPlaying(true);
+  };
+
+  const handleIncreaseScore = () => {
+    setScore(score + 1);
+  };
+
+  if (isLoading) {
+    return <LoadingSpinner />;
   }
 
-  handleShowButton() {
-    this.setState({
-      showButton: true,
-      questionAnswered: true,
-    });
-  }
+  return (
+    <>
+      <div className="text-center">
+        <Popup
+          style={{ display: displayPopup }}
+          score={score}
+          total={TOTAL_NUMBER_OF_QUESTIONS}
+          startQuiz={handleStartQuiz}
+        />
 
-  handleStartQuiz() {
-    this.setState({
-      displayPopup: "none",
-      nr: 1,
-    });
-  }
+        <QuizHeader nr={nr} total={TOTAL_NUMBER_OF_QUESTIONS} />
 
-  handleIncreaseScore() {
-    this.setState({
-      score: this.state.score + 1,
-    });
-  }
+        {playing && (
+          <div>
+            <ServiceImage s3Key={questions[nr].icon} />
 
-  render() {
-    let {
-      nr,
-      total,
-      answers,
-      correct,
-      showButton,
-      questionAnswered,
-      displayPopup,
-      score,
-      isLoading,
-    } = this.state;
+            <QuizButtons
+              onClick={nextQuestion}
+              show={showButton}
+              nr={nr}
+              total={TOTAL_NUMBER_OF_QUESTIONS}
+            />
 
-    if (isLoading) {
-      return (
-        <div className="App">
-          <b>Loading...</b>
-        </div>
-      );
-    }
-
-    return (
-      <>
-        <div className="text-center">
-          <Popup
-            style={{ display: displayPopup }}
-            score={score}
-            total={total}
-            startQuiz={this.handleStartQuiz}
-          />
-
-          <div className="d-flex justify-content-center">
-            <div id="question">
-              <h4>
-                Question {nr}/{total}
-              </h4>
-              <p>
-                Can you choose the correct service belonging to this icon !?
-              </p>
-            </div>
+            <Answers
+              answers={answers}
+              correct={correct}
+              showButton={handleShowButton}
+              isAnswered={questionAnswered}
+              increaseScore={handleIncreaseScore}
+            />
           </div>
-
-          {this.state.questions ? (
-            <div>
-              <div className="d-flex justify-content-center">
-                <img
-                  src={this.state.questionImage}
-                  alt="could not display"
-                  className="img-fluid"
-                />
-              </div>
-
-              <div className="d-flex justify-content-center">
-                <div id="submit" className="d-flex justify-content-center">
-                  {showButton ? (
-                    <button className="fancy-btn" onClick={this.nextQuestion}>
-                      {nr === total ? "Finish quiz" : "Next question"}
-                    </button>
-                  ) : null}
-                </div>
-              </div>
-
-              <div className="d-flex justify-content-center">
-                <Answers
-                  answers={answers}
-                  correct={correct}
-                  showButton={this.handleShowButton}
-                  isAnswered={questionAnswered}
-                  increaseScore={this.handleIncreaseScore}
-                />
-              </div>
-            </div>
-          ) : (
-            <div className="d-flex justify-content-center">
-              <div id="submit" className="d-flex justify-content-center">
-                <p>
-                  <i>Add questions as an admin or turn on your internet.</i>
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
-        <Footer />
-      </>
-    );
-  }
-}
+        )}
+      </div>
+      <Footer />
+    </>
+  );
+};
 
 export default Main;

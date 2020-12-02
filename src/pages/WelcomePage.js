@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { useHistory } from "react-router-dom";
 import { PlayCircleOutlined } from "@ant-design/icons";
+
 import { Button, Select, Image } from "antd";
 import Container from "../components/Container";
 
@@ -17,7 +18,7 @@ const WelcomePage = () => {
   const history = useHistory();
 
   const onClick = () => {
-    history.push("/play");
+    history.push(`/play?quiz=${quizName}`);
   };
 
   const pickQuiz = (e) => {
@@ -67,7 +68,7 @@ const WelcomePage = () => {
               >
                 Play
               </Button>
-              <Image width={200} src={img} />
+              <Image style={{ borderRadius: "40px" }} width={200} src={img} />
             </>
           )}
         </div>

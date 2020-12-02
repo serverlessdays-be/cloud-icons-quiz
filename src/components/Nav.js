@@ -46,14 +46,14 @@ const Nav = (props) => {
         </Menu.Item>
         {user && (
           <>
-            <Menu.Item key="signout">
-              <AmplifySignOut />
-            </Menu.Item>
             <Menu.Item key="createQuestion">
               <Link to="/question/new">
                 <FileProtectOutlined />
                 Create Question
               </Link>
+            </Menu.Item>
+            <Menu.Item key="signout">
+              <AmplifySignOut />
             </Menu.Item>
           </>
         )}
