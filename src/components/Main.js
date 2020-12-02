@@ -119,7 +119,7 @@ class Main extends React.Component {
     }
 
     return (
-      <div className="container">
+      <>
         <div className="text-center">
           <Popup
             style={{ display: displayPopup }}
@@ -180,7 +180,7 @@ class Main extends React.Component {
           )}
         </div>
         <Footer />
-      </div>
+      </>
     );
   }
 }

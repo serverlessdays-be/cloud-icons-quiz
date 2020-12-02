@@ -6,6 +6,7 @@ import Main from "./Main";
 import Protected from "./Protected";
 import Profile from "./Profile";
 import uploadNewQuestion from "./uploadNewQuestion";
+import WelcomePage from "../pages/WelcomePage";
 
 const Router = () => {
   const [current, setCurrent] = useState("home");
@@ -26,7 +27,8 @@ const Router = () => {
     <HashRouter>
       <Nav current={current} />
       <Switch>
-        <Route exact path="/" component={Main} />
+        <Route exact path="/" component={WelcomePage} />
+        <Route exact path="/play" component={Main} />
         <Route exact path="/protected" component={Protected} />
         <Route exact path="/question/new" component={uploadNewQuestion} />
         <Route exact path="/admin" component={Profile} />
