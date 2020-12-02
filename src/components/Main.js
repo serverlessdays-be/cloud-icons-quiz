@@ -52,8 +52,8 @@ class Main extends React.Component {
 
     if (this.state.questions) {
       this.pushData(nr);
-      this.setState({ isLoading: false });
     }
+    this.setState({ isLoading: false });
   }
 
   selectFile = async (key) => {
