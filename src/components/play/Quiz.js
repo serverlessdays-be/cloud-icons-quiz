@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { getNewListOfQuestions } from "../../services/questionService";
 
 import Answers from "./Answers";
-import Footer from "../Footer";
 import Popup from "../Popup";
 import QuizHeader from "./QuizHeader";
 import ServiceImage from "./ServiceImage";
@@ -115,7 +114,6 @@ const Quiz = () => {
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 };

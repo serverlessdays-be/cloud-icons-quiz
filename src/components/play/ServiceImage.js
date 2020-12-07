@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Storage } from "aws-amplify";
 import LoadingSpinner from "../LoadingSpinner";
+import "./ServiceImage.css";
 
 const ServiceImage = ({ s3Key }) => {
   const [loading, setLoading] = useState(true);
@@ -22,8 +23,23 @@ const ServiceImage = ({ s3Key }) => {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="d-flex justify-content-center">
-      <img src={imageSignedUrl} alt="could not display" className="img-fluid" />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        marginTop: "0.5rem",
+      }}
+    >
+      <div className="imageWrapper">
+        <img
+          style={{
+            background: "white",
+            padding: "0.5rem",
+          }}
+          src={imageSignedUrl}
+          alt="could not display"
+        />
+      </div>
     </div>
   );
 };

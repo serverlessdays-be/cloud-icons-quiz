@@ -3,12 +3,20 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { PlayCircleOutlined } from "@ant-design/icons";
 
-import { Button, Select, Image } from "antd";
+import { Button, Select, Image, PageHeader } from "antd";
 import Container from "../components/Container";
 
 import aws from "../assets/aws.jpg";
 import azure from "../assets/azure.png";
 import gcp from "../assets/gcp.png";
+
+import "./WelcomePage.css";
+
+import {
+  QuestionCircleOutlined,
+  ArrowUpOutlined,
+  ArrowDownOutlined,
+} from "@ant-design/icons";
 
 const { Option } = Select;
 
@@ -39,6 +47,15 @@ const WelcomePage = () => {
 
   return (
     <>
+      <div className="site-page-header-ghost-wrapper">
+        <PageHeader
+          title="Serverless Quiz"
+          subTitle="Pick a quiz that you want to play"
+          avatar={{ src: QuestionCircleOutlined }}
+          ghost={false}
+          style={{ margin: "0 1rem 0 1rem" }}
+        />
+      </div>
       <Container>
         <div
           style={{
@@ -47,7 +64,7 @@ const WelcomePage = () => {
             alignItems: "center",
           }}
         >
-          <div>Hi there!</div>
+          {!quizName && <ArrowDownOutlined style={{ fontSize: "2rem" }} />}
           <Select
             style={{ width: "120px", margin: "1rem" }}
             placeholder={"Pick a quiz"}
@@ -57,6 +74,8 @@ const WelcomePage = () => {
             <Option value="azure">Azure</Option>
             <Option value="gcp">GCP</Option>
           </Select>
+
+          {!quizName && <ArrowUpOutlined style={{ fontSize: "2rem" }} />}
 
           {quizName && (
             <>

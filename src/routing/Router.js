@@ -7,6 +7,7 @@ import Profile from "../components/Profile";
 import UploadNewQuestion from "../components/UploadNewQuestion";
 import WelcomePage from "../pages/WelcomePage";
 import Quiz from "../components/play/Quiz";
+import Footer from "../components/Footer";
 
 const Router = () => {
   const [current, setCurrent] = useState("home");
@@ -34,6 +35,7 @@ const Router = () => {
         <Route exact path="/admin" component={Profile} />
         <Route component={Quiz} />
       </Switch>
+      <Footer />
     </HashRouter>
   );
 };

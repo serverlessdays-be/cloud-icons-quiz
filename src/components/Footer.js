@@ -5,13 +5,21 @@ class Footer extends React.Component {
     return (
       <footer>
         <p>
-          Hosted with AWS Amplify by{" "}
+          Created by
+          <a
+            href="https://twitter.com/TheNickVanHoof"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {" Nick"}
+          </a>
+          , hosted by
           <a
             href="https://www.meetup.com/nl-NL/ServerlessDays-Belgium/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            ServerlessDays Belgium.
+            {" ServerlessDays Belgium."}
           </a>
         </p>
         <p>
