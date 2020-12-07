@@ -35,13 +35,13 @@ const normFile = (e) => {
   return e && e.fileList;
 };
 
-function dummyRequest({ file, onSuccess }) {
+const dummyRequest = ({ file, onSuccess }) => {
   setTimeout(() => {
     onSuccess("ok");
   }, 0);
-}
+};
 
-async function addService(service) {
+const addService = async (service) => {
   if (!service.icon || !service.serviceName) {
     return alert("please enter a name and description");
   }
@@ -52,9 +52,10 @@ async function addService(service) {
   } catch (error) {
     console.log("error: ", error);
   }
-}
+};
 
-function uploadNewQuestion() {
+const UploadNewQuestion = () => {
+  const [prevProvider, setPrevProvider] = useState();
   const [form] = Form.useForm();
 
   const submitForm = async (values) => {
@@ -104,6 +105,7 @@ function uploadNewQuestion() {
         <Form.Item
           name="cloudProviderId"
           label="Cloud provider"
+          initialValue={prevProvider ? prevProvider : undefined}
           rules={[
             {
               required: true,
@@ -111,7 +113,10 @@ function uploadNewQuestion() {
             },
           ]}
         >
-          <Select placeholder="Select cloud provider">
+          <Select
+            placeholder="Select cloud provider"
+            onChange={(value) => setPrevProvider(value)}
+          >
             <Select.Option value={CloudProvider.AWS}>
               {CloudProvider.AWS}
             </Select.Option>
@@ -149,7 +154,7 @@ function uploadNewQuestion() {
       </Form>
     </Container>
   );
-}
+};
 
 // export default protectedRoute(uploadNewQuestion);
-export default protectedRoute(uploadNewQuestion);
+export default protectedRoute(UploadNewQuestion);

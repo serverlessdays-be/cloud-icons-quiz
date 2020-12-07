@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-import { getNewListOfQuestions } from "../services/questionService";
+import { getNewListOfQuestions } from "../../services/questionService";
 
-import Answers from "./play/Answers";
-import Footer from "./Footer";
-import Popup from "./Popup";
-import QuizHeader from "./play/QuizHeader";
-import ServiceImage from "./play/ServiceImage";
-import QuizButtons from "./play/QuizButtons";
-import NoQuestionsFound from "./play/NoQuestionsFound";
-import LoadingSpinner from "./LoadingSpinner";
+import Answers from "./Answers";
+import Footer from "../Footer";
+import Popup from "../Popup";
+import QuizHeader from "./QuizHeader";
+import ServiceImage from "./ServiceImage";
+import QuizButtons from "./QuizButtons";
+import LoadingSpinner from "../LoadingSpinner";
+import useQuery from "../../hooks/useQuery";
 
 const TOTAL_NUMBER_OF_QUESTIONS = 10;
 
-const Main = () => {
+const Quiz = () => {
   const [questions, setQuestions] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [question, setQuestion] = useState();
@@ -25,10 +25,12 @@ const Main = () => {
   const [questionAnswered, setQuestionAnswered] = useState(false);
   const [score, setScore] = useState(0);
   const [displayPopup, setDisplayPopup] = useState("d-flex");
+  const query = useQuery();
 
   useEffect(() => {
+    const cloudProvider = query.get("quiz").toUpperCase();
     const getQuestions = async () => {
-      const newListOfQuestions = await getNewListOfQuestions();
+      const newListOfQuestions = await getNewListOfQuestions(cloudProvider);
       setQuestions(newListOfQuestions);
       console.log("updating number");
       setNr(0);
@@ -118,4 +120,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Quiz;

@@ -23,9 +23,7 @@ type CloudProvider
   @model
   @auth(
     rules: [
-      # The owner is allowed to do everything
       { allow: owner }
-      # The public is only allowed to read
       { allow: public, provider: apiKey, operations: [read] }
     ]
   )
