@@ -62,7 +62,7 @@ class Popup extends React.Component {
                 : "Let's dive in and prove ourselves! "}
             </p>
             <p>
-              Interested in more serverless? Join:{" "}
+              Interested in more serverless? Join:
               <a
                 href="https://www.meetup.com/nl-NL/ServerlessDays-Belgium"
                 target="_blank"

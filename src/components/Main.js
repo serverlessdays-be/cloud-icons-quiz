@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { getNewListOfQuestions } from "../services/questionService";
 
-import Answers from "./Answers";
+import Answers from "./play/Answers";
 import Footer from "./Footer";
 import Popup from "./Popup";
 import QuizHeader from "./play/QuizHeader";
