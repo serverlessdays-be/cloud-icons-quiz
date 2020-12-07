@@ -1,84 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-class Popup extends React.Component {
-  constructor(props) {
-    super(props);
+const Popup = ({ startQuiz, score, total, style }) => {
+  const [time, setTime] = useState("start");
+  const [title, setTitle] = useState("Welcome to the Serverless Icon Quiz");
+  const [buttonText, setButtonText] = useState("Start the quiz");
+  const history = useHistory();
 
-    this.state = {
-      time: "start",
-      title: "Welcome to the Serverless Icon Quiz",
-      text: "Let's dive in!",
-      buttonText: "Start the quiz",
-      completed: false,
-    };
-
-    this.popupHandle = this.popupHandle.bind(this);
-  }
-
-  popupHandle() {
-    let { time } = this.state;
-
+  const popupHandle = () => {
     if (time === "start") {
-      this.setState({
-        time: "end",
-        title: "Congratulations!",
-        buttonText: "Restart",
-      });
-
-      this.props.startQuiz();
+      setTime("end");
+      setTitle("Congratulations!");
+      setButtonText("New quiz!");
+      startQuiz();
     } else {
-      window.location.reload();
+      history.push("/");
     }
-  }
+  };
 
-  createMarkup() {
-    let text = "";
-    if (!this.state.completed) {
-      text = "Let's dive in and prove ourselves!";
-    } else if (this.state.completed) {
-      text =
-        "You have (not) completed the quiz. <br /> You now have: <strong>" +
-        this.props.score +
-        "</strong> out of <strong>" +
-        this.props.total +
-        "</strong> questions right. Go for it (again)!";
-    }
-    return { __html: text };
-  }
-
-  render() {
-    let { title, buttonText } = this.state;
-
-    let { style } = this.props;
-
-    return (
-      <div className="popup-container" style={style}>
-        <div className="container">
-          <div className="popup">
-            <h1>{title}</h1>
-            <p>
-              {this.props.score !== 0
-                ? this.props.score + " out of " + this.props.total
-                : "Let's dive in and prove ourselves! "}
-            </p>
-            <p>
-              Interested in more serverless? Join:
-              <a
-                href="https://www.meetup.com/nl-NL/ServerlessDays-Belgium"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <strong>ServerlessDaysBE!</strong>
-              </a>
-            </p>
-            <button className="fancy-btn" onClick={this.popupHandle}>
-              {buttonText}
-            </button>
-          </div>
+  return (
+    <div className="popup-container" style={style}>
+      <div className="container">
+        <div className="popup">
+          <h1>{title}</h1>
+          <p>
+            {score !== 0
+              ? score + " out of " + total
+              : "Let's dive in and prove ourselves! "}
+          </p>
+          <p>
+            Interested in more serverless? Join:
+            <a
+              href="https://www.meetup.com/nl-NL/ServerlessDays-Belgium"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <strong>ServerlessDaysBE!</strong>
+            </a>
+          </p>
+          <button className="fancy-btn" onClick={popupHandle}>
+            {buttonText}
+          </button>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Popup;
