@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Form, Input, Button, Upload } from "antd";
+import { Form, Input, Button, Upload, Select } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
 import { API, graphqlOperation } from "aws-amplify/";
@@ -9,6 +9,7 @@ import { createService } from "../graphql/mutations";
 
 import protectedRoute from "./protectedRoute";
 import Container from "./Container";
+import CloudProvider from "../model/cloudProvider";
 
 const layout = {
   labelCol: {
@@ -98,6 +99,29 @@ function uploadNewQuestion() {
           ]}
         >
           <Input />
+        </Form.Item>
+
+        <Form.Item
+          name="cloudProviderId"
+          label="Cloud provider"
+          rules={[
+            {
+              required: true,
+              message: "Please input the cloud provider!",
+            },
+          ]}
+        >
+          <Select placeholder="Select cloud provider">
+            <Select.Option value={CloudProvider.AWS}>
+              {CloudProvider.AWS}
+            </Select.Option>
+            <Select.Option value={CloudProvider.AZURE}>
+              {CloudProvider.AZURE}
+            </Select.Option>
+            <Select.Option value={CloudProvider.GCP}>
+              {CloudProvider.GCP}
+            </Select.Option>
+          </Select>
         </Form.Item>
 
         <Form.Item
