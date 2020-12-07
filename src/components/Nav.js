@@ -37,7 +37,7 @@ const Nav = (props) => {
         </Menu.Item>
         <Menu.Item key="alipay">
           <a
-            href="https://www.meetup.com/nl-NL/ServerlessDays-Belgium"
+            href="https://www.meetup.com/nl-NL/ServerlessDays-Belgium/events/274890129"
             target="_blank"
             rel="noopener noreferrer"
           >
