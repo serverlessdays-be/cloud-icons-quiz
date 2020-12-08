@@ -1,4 +1,5 @@
 import React from "react";
+import { ArrowUpOutlined } from "@ant-design/icons";
 
 class Footer extends React.Component {
   render() {
@@ -11,7 +12,15 @@ class Footer extends React.Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {" Nick"}
+            {" Nick "}
+          </a>
+          and
+          <a
+            href="https://twitter.com/drissamri88"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {" Driss"}
           </a>
           , hosted by
           <a
