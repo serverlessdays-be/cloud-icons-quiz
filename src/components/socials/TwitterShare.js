@@ -11,11 +11,11 @@ const TwitterShare = ({ score, quiz }) => {
     const handle =
       quiz === "aws" ? "@awscloud" : quiz === "azure" ? "@Azure" : "@GCPcloud";
     setCloudProviderTwitterHandle(handle);
-  });
+  }, [quiz]);
 
   return (
     <TwitterShareButton
-      title={`I completed the Serverless Icon Quiz for ${cloudProviderTwitterHandle} with a score of: ${score}/10!`}
+      title={`I completed the Serverless Icon Quiz for ${cloudProviderTwitterHandle} with a score of: ${score}/10! By @ServerlessBEL`}
       url={"https://quiz.serverlessdays.be"}
       hashtags={["serverless", "cloud"]}
     >

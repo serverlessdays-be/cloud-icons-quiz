@@ -9,6 +9,7 @@ import Container from "../components/Container";
 import aws from "../assets/aws.jpg";
 import azure from "../assets/azure.png";
 import gcp from "../assets/gcp.png";
+import cloudIcon from "../assets/cloud-icon.png";
 
 import "./WelcomePage.css";
 
@@ -90,6 +91,9 @@ const WelcomePage = () => {
               </Button>
               <Image style={{ borderRadius: "40px" }} width={200} src={img} />
             </>
+          )}
+          {!quizName && (
+            <Image style={{ padding: "0.5rem" }} width={200} src={cloudIcon} />
           )}
         </div>
       </Container>
