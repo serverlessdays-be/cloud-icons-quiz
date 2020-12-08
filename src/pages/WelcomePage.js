@@ -66,8 +66,9 @@ const WelcomePage = () => {
         >
           {!quizName && <ArrowDownOutlined style={{ fontSize: "2rem" }} />}
           <Select
+            size="large"
             style={{ width: "120px", margin: "1rem" }}
-            placeholder={"Pick a quiz"}
+            placeholder={"Pick quiz"}
             onChange={pickQuiz}
           >
             <Option value="aws">AWS</Option>

@@ -22,7 +22,7 @@ const Quiz = () => {
   const [playing, setPlaying] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [questionAnswered, setQuestionAnswered] = useState(false);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState();
   const [displayPopup, setDisplayPopup] = useState("d-flex");
   const query = useQuery();
 
@@ -70,6 +70,7 @@ const Quiz = () => {
 
   const handleStartQuiz = () => {
     setDisplayPopup("none");
+    setScore(0);
     setPlaying(true);
   };
 
@@ -89,6 +90,7 @@ const Quiz = () => {
           score={score}
           total={TOTAL_NUMBER_OF_QUESTIONS}
           startQuiz={handleStartQuiz}
+          quiz={query.get("quiz")}
         />
 
         <QuizHeader nr={nr} total={TOTAL_NUMBER_OF_QUESTIONS} />

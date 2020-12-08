@@ -22,8 +22,8 @@ class Footer extends React.Component {
             {" ServerlessDays Belgium."}
           </a>
         </p>
-        <p>
-          View on{" "}
+        {/* <p>
+          View on
           <a
             href="https://github.com/serverlessdays-be/cloud-icons-quiz"
             target="_blank"
@@ -32,7 +32,7 @@ class Footer extends React.Component {
             Github
           </a>
           .
-        </p>
+        </p> */}
       </footer>
     );
   }

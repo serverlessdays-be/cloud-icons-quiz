@@ -27,7 +27,7 @@ const ServiceImage = ({ s3Key }) => {
       style={{
         display: "flex",
         justifyContent: "center",
-        marginTop: "0.5rem",
+        marginTop: "0.8rem",
       }}
     >
       <div className="imageWrapper">
