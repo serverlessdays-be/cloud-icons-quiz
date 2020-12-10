@@ -6,6 +6,7 @@ export const onCreateService = /* GraphQL */ `
     onCreateService(owner: $owner) {
       serviceName
       icon
+      cloudProviderId
       createdAt
       updatedAt
       owner
@@ -17,6 +18,7 @@ export const onUpdateService = /* GraphQL */ `
     onUpdateService(owner: $owner) {
       serviceName
       icon
+      cloudProviderId
       createdAt
       updatedAt
       owner
@@ -28,8 +30,72 @@ export const onDeleteService = /* GraphQL */ `
     onDeleteService(owner: $owner) {
       serviceName
       icon
+      cloudProviderId
       createdAt
       updatedAt
+      owner
+    }
+  }
+`;
+export const onCreateCloudProvider = /* GraphQL */ `
+  subscription OnCreateCloudProvider($owner: String) {
+    onCreateCloudProvider(owner: $owner) {
+      name
+      createdAt
+      updatedAt
+      services {
+        items {
+          serviceName
+          icon
+          cloudProviderId
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
+      owner
+    }
+  }
+`;
+export const onUpdateCloudProvider = /* GraphQL */ `
+  subscription OnUpdateCloudProvider($owner: String) {
+    onUpdateCloudProvider(owner: $owner) {
+      name
+      createdAt
+      updatedAt
+      services {
+        items {
+          serviceName
+          icon
+          cloudProviderId
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
+      owner
+    }
+  }
+`;
+export const onDeleteCloudProvider = /* GraphQL */ `
+  subscription OnDeleteCloudProvider($owner: String) {
+    onDeleteCloudProvider(owner: $owner) {
+      name
+      createdAt
+      updatedAt
+      services {
+        items {
+          serviceName
+          icon
+          cloudProviderId
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       owner
     }
   }

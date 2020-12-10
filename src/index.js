@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import './index.css';
 import "./styles/app.css";
 
-import Router from "./components/Router";
+import Router from "./routing/Router";
 
 import "antd/dist/antd.css";
 

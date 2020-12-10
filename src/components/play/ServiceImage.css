@@ -1,0 +1,9 @@
+.imageWrapper {
+  height: 180px;
+  padding: 1px;
+  border: 1px solid #021a40;
+}
+img {
+  width: auto;
+  height: 100%;
+}

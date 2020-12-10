@@ -1,15 +1,33 @@
-
-type Service 
-  @model 
+type Service
+  @model
   @auth(
     rules: [
       # The owner is allowed to do everything
       { allow: owner }
-      # The public is only allowed to read posts
-      { allow: public, provider: apiKey ,operations: [read] }
+      # The public is only allowed to read
+      { allow: public, provider: apiKey, operations: [read] }
     ]
   )
-  @key(fields: ["serviceName"]) {
-    serviceName: String!
-    icon: String!
-  }
+  @key(fields: ["serviceName"])
+  @key(
+    name: "byCloudProvider"
+    fields: ["cloudProviderId"]
+    queryField: "listServicesByCloudProvider"
+  ) {
+  serviceName: String!
+  icon: String!
+  cloudProviderId: String
+}
+
+type CloudProvider
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: public, provider: apiKey, operations: [read] }
+    ]
+  )
+  @key(fields: ["name"]) {
+  name: String!
+  services: [Service] @connection(keyName: "byCloudProvider", fields: ["name"])
+}

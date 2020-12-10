@@ -37,24 +37,26 @@ const Nav = (props) => {
         </Menu.Item>
         <Menu.Item key="alipay">
           <a
-            href="https://www.meetup.com/nl-NL/ServerlessDays-Belgium"
+            href="https://www.meetup.com/nl-NL/ServerlessDays-Belgium/events/274890129"
             target="_blank"
             rel="noopener noreferrer"
           >
             <strong>ServerlessDaysBE!</strong>
           </a>
         </Menu.Item>
-        <Menu.Item key="createQuestion">
-          <Link to="/question/new">
-            <FileProtectOutlined />
-            Create Question
-          </Link>
-        </Menu.Item>
-        {user ? (
-          <Menu.Item key="signout">
-            <AmplifySignOut />
-          </Menu.Item>
-        ) : null}
+        {user && (
+          <>
+            <Menu.Item key="createQuestion">
+              <Link to="/question/new">
+                <FileProtectOutlined />
+                Create Question
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="signout">
+              <AmplifySignOut />
+            </Menu.Item>
+          </>
+        )}
       </Menu>
     </div>
   );

@@ -1,21 +1,38 @@
 import React from "react";
+import { ArrowUpOutlined } from "@ant-design/icons";
 
 class Footer extends React.Component {
   render() {
     return (
       <footer>
         <p>
-          Hosted with AWS Amplify by{" "}
+          Created by
+          <a
+            href="https://twitter.com/TheNickVanHoof"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {" Nick "}
+          </a>
+          and
+          <a
+            href="https://twitter.com/drissamri88"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {" Driss"}
+          </a>
+          , hosted by
           <a
             href="https://www.meetup.com/nl-NL/ServerlessDays-Belgium/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            ServerlessDays Belgium.
+            {" ServerlessDays Belgium."}
           </a>
         </p>
-        <p>
-          View on{" "}
+        {/* <p>
+          View on
           <a
             href="https://github.com/serverlessdays-be/cloud-icons-quiz"
             target="_blank"
@@ -24,7 +41,7 @@ class Footer extends React.Component {
             Github
           </a>
           .
-        </p>
+        </p> */}
       </footer>
     );
   }

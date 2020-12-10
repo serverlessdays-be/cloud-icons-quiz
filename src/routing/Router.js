@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 
-import Nav from "./Nav";
-import Main from "./Main";
-import Protected from "./Protected";
-import Profile from "./Profile";
-import uploadNewQuestion from "./uploadNewQuestion";
+import Nav from "../components/Nav";
+import Protected from "../components/Protected";
+import Profile from "../components/Profile";
+import UploadNewQuestion from "../components/UploadNewQuestion";
+import WelcomePage from "../pages/WelcomePage";
+import Quiz from "../components/play/Quiz";
+import Footer from "../components/Footer";
 
 const Router = () => {
   const [current, setCurrent] = useState("home");
@@ -26,12 +28,14 @@ const Router = () => {
     <HashRouter>
       <Nav current={current} />
       <Switch>
-        <Route exact path="/" component={Main} />
+        <Route exact path="/" component={WelcomePage} />
+        <Route path="/play" component={Quiz} />
         <Route exact path="/protected" component={Protected} />
-        <Route exact path="/question/new" component={uploadNewQuestion} />
+        <Route exact path="/question/new" component={UploadNewQuestion} />
         <Route exact path="/admin" component={Profile} />
-        <Route component={Main} />
+        <Route component={Quiz} />
       </Switch>
+      <Footer />
     </HashRouter>
   );
 };

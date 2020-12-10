@@ -9,6 +9,7 @@ export const createService = /* GraphQL */ `
     createService(input: $input, condition: $condition) {
       serviceName
       icon
+      cloudProviderId
       createdAt
       updatedAt
       owner
@@ -23,6 +24,7 @@ export const updateService = /* GraphQL */ `
     updateService(input: $input, condition: $condition) {
       serviceName
       icon
+      cloudProviderId
       createdAt
       updatedAt
       owner
@@ -37,8 +39,81 @@ export const deleteService = /* GraphQL */ `
     deleteService(input: $input, condition: $condition) {
       serviceName
       icon
+      cloudProviderId
       createdAt
       updatedAt
+      owner
+    }
+  }
+`;
+export const createCloudProvider = /* GraphQL */ `
+  mutation CreateCloudProvider(
+    $input: CreateCloudProviderInput!
+    $condition: ModelCloudProviderConditionInput
+  ) {
+    createCloudProvider(input: $input, condition: $condition) {
+      name
+      createdAt
+      updatedAt
+      services {
+        items {
+          serviceName
+          icon
+          cloudProviderId
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
+      owner
+    }
+  }
+`;
+export const updateCloudProvider = /* GraphQL */ `
+  mutation UpdateCloudProvider(
+    $input: UpdateCloudProviderInput!
+    $condition: ModelCloudProviderConditionInput
+  ) {
+    updateCloudProvider(input: $input, condition: $condition) {
+      name
+      createdAt
+      updatedAt
+      services {
+        items {
+          serviceName
+          icon
+          cloudProviderId
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
+      owner
+    }
+  }
+`;
+export const deleteCloudProvider = /* GraphQL */ `
+  mutation DeleteCloudProvider(
+    $input: DeleteCloudProviderInput!
+    $condition: ModelCloudProviderConditionInput
+  ) {
+    deleteCloudProvider(input: $input, condition: $condition) {
+      name
+      createdAt
+      updatedAt
+      services {
+        items {
+          serviceName
+          icon
+          cloudProviderId
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       owner
     }
   }
